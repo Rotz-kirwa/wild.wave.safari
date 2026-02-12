@@ -98,7 +98,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="text-base px-8 py-6 border-safari-cream/30 text-safari-cream hover:bg-safari-cream/10">
+              <Button size="lg" variant="default" className="text-base px-8 py-6">
                 Plan Your Trip
               </Button>
             </Link>
