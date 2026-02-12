@@ -334,7 +334,7 @@ const Index = () => {
                   Start Planning <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
-              <a href="https://wa.me/254700123456" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/254713241666" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" variant="outline" className="text-base px-8 py-6 border-safari-cream/30 text-safari-cream hover:bg-safari-cream/10">
                   WhatsApp Us
                 </Button>

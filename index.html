@@ -2,8 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function() {
+        if (typeof crypto !== 'undefined' && typeof crypto.randomUUID !== 'function') {
+          crypto.randomUUID = function() {
+            return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, function(c) {
+              return (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16);
+            });
+          };
+        }
+      })();
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- TODO: Set the document title to the name of your application -->
     <title>WildWave Safaris | East Africa's Premier Safari Company</title>
     <meta name="description" content="Handcrafted safari experiences across Kenya, Tanzania, Uganda & Rwanda." />
     <meta name="author" content="WildWave Safaris" />

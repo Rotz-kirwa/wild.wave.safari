@@ -45,10 +45,10 @@ const Contact = () => {
                 <h3 className="font-display text-xl font-semibold mb-6">Reach Us Directly</h3>
                 <div className="space-y-6">
                   {[
-                    { icon: Phone, label: "Call Us", value: "+254 700 123 456", href: "tel:+254700123456" },
-                    { icon: Mail, label: "Email Us", value: "hello@wildwavesafaris.com", href: "mailto:hello@wildwavesafaris.com" },
-                    { icon: MessageCircle, label: "WhatsApp", value: "+254 700 123 456", href: "https://wa.me/254700123456" },
-                    { icon: MapPin, label: "Visit Us", value: "Karen Road, Nairobi, Kenya", href: "#" },
+                    { icon: Phone, label: "Call Us", value: "+254 713 241 666", href: "tel:+254713241666" },
+                    { icon: Mail, label: "Email Us", value: "wildwavesafaris@gmail.com", href: "mailto:wildwavesafaris@gmail.com" },
+                    { icon: MessageCircle, label: "WhatsApp", value: "+254 713 241 666", href: "https://wa.me/254713241666" },
+                    { icon: MapPin, label: "Visit Us", value: "Thika Road, Spur Mall, Nairobi", href: "#" },
                   ].map((item) => (
                     <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="flex items-start gap-4 group">
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">

@@ -59,15 +59,15 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li className="flex items-center gap-3 opacity-80">
                 <Phone className="w-4 h-4 text-primary" />
-                +254 700 123 456
+                +254 713 241 666
               </li>
               <li className="flex items-center gap-3 opacity-80">
                 <Mail className="w-4 h-4 text-primary" />
-                hello@wildwavesafaris.com
+                wildwavesafaris@gmail.com
               </li>
               <li className="flex items-start gap-3 opacity-80">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
-                Karen Road, Nairobi, Kenya
+                Thika Road, Spur Mall, Nairobi
               </li>
             </ul>
           </div>
