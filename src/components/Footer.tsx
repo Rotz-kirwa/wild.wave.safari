@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-display font-bold text-safari-cream mb-4">
-              Savanna<span className="text-primary">Trails</span>
+              Wild<span className="text-primary">Wave</span> Safaris
             </h3>
             <p className="text-sm leading-relaxed opacity-80 mb-6">
               Crafting unforgettable East African safari experiences since 2010. 
@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-3 opacity-80">
                 <Mail className="w-4 h-4 text-primary" />
-                hello@savannatrails.com
+                hello@wildwavesafaris.com
               </li>
               <li className="flex items-start gap-3 opacity-80">
                 <MapPin className="w-4 h-4 text-primary mt-0.5" />
@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-12 pt-8 border-t border-safari-warm-brown text-center text-sm opacity-60">
-          <p>© {new Date().getFullYear()} SavannaTrails. All rights reserved. | KATO Licensed Tour Operator</p>
+          <p>© {new Date().getFullYear()} WildWave Safaris. All rights reserved. | KATO Licensed Tour Operator</p>
         </div>
       </div>
     </footer>

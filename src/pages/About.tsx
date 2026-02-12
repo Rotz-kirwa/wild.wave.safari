@@ -38,7 +38,7 @@ const About = () => {
           </h1>
           <p className="text-safari-sand/90 max-w-2xl mx-auto text-lg leading-relaxed">
             Founded in 2010 by wildlife enthusiasts who grew up on the savannas of East Africa, 
-            SavannaTrails was born from a desire to share the magic of the wild with the world — responsibly and authentically.
+            WildWave Safaris was born from a desire to share the magic of the wild with the world — responsibly and authentically.
           </p>
         </div>
       </section>

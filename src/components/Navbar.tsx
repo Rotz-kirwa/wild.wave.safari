@@ -37,7 +37,7 @@ const Navbar = () => {
       <div className="container mx-auto px-4 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className={`text-2xl md:text-3xl font-display font-bold tracking-tight transition-colors ${scrolled ? "text-foreground" : "text-primary-foreground"}`}>
-            Savanna<span className="text-primary">Trails</span>
+            Wild<span className="text-primary">Wave</span> Safaris
           </span>
         </Link>
 

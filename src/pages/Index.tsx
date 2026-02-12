@@ -28,9 +28,9 @@ const packages = [
 ];
 
 const testimonials = [
-  { name: "Sarah & James", location: "London, UK", text: "SavannaTrails gave us the trip of a lifetime. Seeing the wildebeest migration up close was absolutely magical. Our guide was incredibly knowledgeable.", rating: 5 },
+  { name: "Sarah & James", location: "London, UK", text: "WildWave Safaris gave us the trip of a lifetime. Seeing the wildebeest migration up close was absolutely magical. Our guide was incredibly knowledgeable.", rating: 5 },
   { name: "Dr. Amara Osei", location: "Accra, Ghana", text: "The gorilla trekking experience was beyond words. The team handled every detail perfectly — from permits to lodge bookings. Truly world-class service.", rating: 5 },
-  { name: "Marco & Lucia", location: "Milan, Italy", text: "We've traveled extensively, but nothing compares to our Serengeti balloon safari. SavannaTrails made it seamless and unforgettable.", rating: 5 },
+  { name: "Marco & Lucia", location: "Milan, Italy", text: "We've traveled extensively, but nothing compares to our Serengeti balloon safari. WildWave Safaris made it seamless and unforgettable.", rating: 5 },
 ];
 
 const stats = [
