@@ -46,7 +46,7 @@ const Contact = () => {
                 <div className="space-y-6">
                   {[
                     { icon: Phone, label: "Call Us", value: "+254 700 123 456", href: "tel:+254700123456" },
-                    { icon: Mail, label: "Email Us", value: "hello@savannatrails.com", href: "mailto:hello@savannatrails.com" },
+                    { icon: Mail, label: "Email Us", value: "hello@wildwavesafaris.com", href: "mailto:hello@wildwavesafaris.com" },
                     { icon: MessageCircle, label: "WhatsApp", value: "+254 700 123 456", href: "https://wa.me/254700123456" },
                     { icon: MapPin, label: "Visit Us", value: "Karen Road, Nairobi, Kenya", href: "#" },
                   ].map((item) => (
