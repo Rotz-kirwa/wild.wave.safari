@@ -2,16 +2,16 @@ import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react";
 
 const partners = [
-  { name: "KWS", logo: "https://i.pinimg.com/736x/c0/a6/c6/c0a6c633ee7ad764c4cd50e5b04cccae.jpg" },
-  { name: "TRA", logo: "https://i.pinimg.com/736x/8e/3d/0a/8e3d0a8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
-  { name: "Safari Bookings", logo: "https://i.pinimg.com/736x/a5/2e/8d/a52e8d8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
-  { name: "TOSK", logo: "https://i.pinimg.com/736x/b3/4f/1c/b34f1c8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
-  { name: "Magical Kenya", logo: "https://i.pinimg.com/736x/c1/d1/42/c1d14293c0597d3b7a94a40222c6464c.jpg" },
-  { name: "Sopa Lodges", logo: "https://i.pinimg.com/736x/92/36/31/923631f353cdb0a7fa328b51a730c14b.jpg" },
-  { name: "Serena Hotels", logo: "https://i.pinimg.com/736x/f7/bf/32/f7bf32c64f80b641fab94c24b99e6de1.jpg" },
-  { name: "TripAdvisor", logo: "https://i.pinimg.com/736x/d4/e2/5a/d4e25a8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
-  { name: "Bonfire Adventures", logo: "https://i.pinimg.com/736x/e5/f3/6b/e5f36b8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
-  { name: "Kenya Railways", logo: "https://i.pinimg.com/736x/f6/04/7c/f6047c8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "KWS", logo: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=200&h=80&fit=crop" },
+  { name: "TRA", logo: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=200&h=80&fit=crop" },
+  { name: "Safari Bookings", logo: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=200&h=80&fit=crop" },
+  { name: "TOSK", logo: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=200&h=80&fit=crop" },
+  { name: "Magical Kenya", logo: "https://images.unsplash.com/photo-1549366021-9f761d450615?w=200&h=80&fit=crop" },
+  { name: "Sopa Lodges", logo: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=200&h=80&fit=crop" },
+  { name: "Serena Hotels", logo: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=80&fit=crop" },
+  { name: "TripAdvisor", logo: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=200&h=80&fit=crop" },
+  { name: "Bonfire Adventures", logo: "https://images.unsplash.com/photo-1484406566174-9da000fda645?w=200&h=80&fit=crop" },
+  { name: "Kenya Railways", logo: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=200&h=80&fit=crop" },
 ];
 
 const Footer = () => {
