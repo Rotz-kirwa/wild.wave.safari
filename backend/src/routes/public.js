@@ -1,0 +1,90 @@
+import express from 'express';
+import pool from '../config/db.js';
+
+const router = express.Router();
+
+router.get('/destinations', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM destinations WHERE published = true ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Public destinations error:', error);
+    res.status(500).json({ error: 'Failed to fetch destinations' });
+  }
+});
+
+router.get('/destinations/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query('SELECT * FROM destinations WHERE id = $1', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Destination not found' });
+    }
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Public destination error:', error);
+    res.status(500).json({ error: 'Failed to fetch destination' });
+  }
+});
+
+router.post('/bookings', async (req, res) => {
+  try {
+    const { customer_name, email, phone, safari_type, number_of_people, start_date, total_price } = req.body;
+    
+    const result = await pool.query(
+      'INSERT INTO bookings (customer_name, email, phone, safari_type, number_of_people, start_date, total_price, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      [customer_name, email, phone, safari_type, number_of_people, start_date, total_price, 'pending']
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create booking error:', error);
+    res.status(500).json({ error: 'Failed to create booking' });
+  }
+});
+
+router.post('/enquiries', async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    
+    const result = await pool.query(
+      'INSERT INTO enquiries (name, email, phone, message, status) VALUES ($1, $2, $3, $4, $5) RETURNING *',
+      [name, email, phone, message, 'new']
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create enquiry error:', error);
+    res.status(500).json({ error: 'Failed to create enquiry' });
+  }
+});
+
+router.get('/blogs', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM blogs WHERE published = true ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Public blogs error:', error);
+    res.status(500).json({ error: 'Failed to fetch blogs' });
+  }
+});
+
+router.get('/blogs/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query('SELECT * FROM blogs WHERE id = $1 AND published = true', [id]);
+    
+    if (result.rows.length === 0) {
+      return res.status(404).json({ error: 'Blog not found' });
+    }
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Public blog error:', error);
+    res.status(500).json({ error: 'Failed to fetch blog' });
+  }
+});
+
+export default router;

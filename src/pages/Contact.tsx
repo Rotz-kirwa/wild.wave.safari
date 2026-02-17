@@ -12,10 +12,25 @@ const Contact = () => {
     name: "", email: "", phone: "", destination: "", travelers: "", message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: "Inquiry Sent!", description: "We'll get back to you within 24 hours." });
-    setFormData({ name: "", email: "", phone: "", destination: "", travelers: "", message: "" });
+    try {
+      await fetch('http://localhost:5000/api/public/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `Safari Inquiry - ${formData.destination || 'General'}`,
+          message: `Destination: ${formData.destination}\nTravelers: ${formData.travelers}\n\n${formData.message}`
+        })
+      });
+      toast({ title: "Inquiry Sent!", description: "We'll get back to you within 24 hours." });
+      setFormData({ name: "", email: "", phone: "", destination: "", travelers: "", message: "" });
+    } catch (error) {
+      toast({ title: "Error", description: "Failed to send inquiry. Please try again.", variant: "destructive" });
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
