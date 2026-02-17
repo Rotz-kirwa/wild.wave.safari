@@ -3,15 +3,15 @@ import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react"
 
 const partners = [
   { name: "KWS", logo: "https://i.pinimg.com/736x/c0/a6/c6/c0a6c633ee7ad764c4cd50e5b04cccae.jpg" },
-  { name: "TRA", logo: "https://tra.go.ke/wp-content/uploads/2024/09/Logo-TRA.png" },
-  { name: "Safari Bookings", logo: "https://cfstatic.safaribookings.com/img/logos/logo-240x35.png" },
-  { name: "TOSK", logo: "https://staging.toskenya.org/wp-content/uploads/2024/03/tosk_logo_v2.webp" },
-  { name: "Magical Kenya", logo: "https://magicalkenya.com/wp-content/uploads/2024/09/Magical-Kenya-LOGO-1-2.png" },
-  { name: "Sopa Lodges", logo: "https://www.sopalodges.com/images/logos/sopalodges-logo.png" },
-  { name: "Serena Hotels", logo: "https://image-tc.galaxy.tf/wisvg-bef60isivhiwcb2xdupujlz1o/serena-hotel-colored-logo.svg?width=122&height=64" },
-  { name: "TripAdvisor", logo: "https://static.tacdn.com/img2/brand_refresh_2025/logos/wordmark.svg" },
-  { name: "Bonfire Adventures", logo: "https://storage.aerocrs.com/99/system/logo.png" },
-  { name: "Kenya Railways", logo: "https://upload.wikimedia.org/wikipedia/commons/0/06/Kenya_Railways_logo.png" },
+  { name: "TRA", logo: "https://i.pinimg.com/736x/8e/3d/0a/8e3d0a8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "Safari Bookings", logo: "https://i.pinimg.com/736x/a5/2e/8d/a52e8d8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "TOSK", logo: "https://i.pinimg.com/736x/b3/4f/1c/b34f1c8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "Magical Kenya", logo: "https://i.pinimg.com/736x/c1/d1/42/c1d14293c0597d3b7a94a40222c6464c.jpg" },
+  { name: "Sopa Lodges", logo: "https://i.pinimg.com/736x/92/36/31/923631f353cdb0a7fa328b51a730c14b.jpg" },
+  { name: "Serena Hotels", logo: "https://i.pinimg.com/736x/f7/bf/32/f7bf32c64f80b641fab94c24b99e6de1.jpg" },
+  { name: "TripAdvisor", logo: "https://i.pinimg.com/736x/d4/e2/5a/d4e25a8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "Bonfire Adventures", logo: "https://i.pinimg.com/736x/e5/f3/6b/e5f36b8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
+  { name: "Kenya Railways", logo: "https://i.pinimg.com/736x/f6/04/7c/f6047c8c8f5e5c5e5e5e5e5e5e5e5e5e.jpg" },
 ];
 
 const Footer = () => {
