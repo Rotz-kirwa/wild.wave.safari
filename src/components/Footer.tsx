@@ -1,9 +1,42 @@
 import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react";
 
+const partners = [
+  { name: "KWS", logo: "https://i.pinimg.com/736x/c0/a6/c6/c0a6c633ee7ad764c4cd50e5b04cccae.jpg" },
+  { name: "TRA", logo: "https://tra.go.ke/wp-content/uploads/2024/09/Logo-TRA.png" },
+  { name: "Safari Bookings", logo: "https://cfstatic.safaribookings.com/img/logos/logo-240x35.png" },
+  { name: "TOSK", logo: "https://staging.toskenya.org/wp-content/uploads/2024/03/tosk_logo_v2.webp" },
+  { name: "Magical Kenya", logo: "https://magicalkenya.com/wp-content/uploads/2024/09/Magical-Kenya-LOGO-1-2.png" },
+  { name: "Sopa Lodges", logo: "https://www.sopalodges.com/images/logos/sopalodges-logo.png" },
+  { name: "Serena Hotels", logo: "https://image-tc.galaxy.tf/wisvg-bef60isivhiwcb2xdupujlz1o/serena-hotel-colored-logo.svg?width=122&height=64" },
+  { name: "TripAdvisor", logo: "https://static.tacdn.com/img2/brand_refresh_2025/logos/wordmark.svg" },
+  { name: "Bonfire Adventures", logo: "https://storage.aerocrs.com/99/system/logo.png" },
+  { name: "Kenya Railways", logo: "https://upload.wikimedia.org/wikipedia/commons/0/06/Kenya_Railways_logo.png" },
+];
+
 const Footer = () => {
   return (
     <footer className="bg-safari-charcoal text-safari-sand">
+      {/* Partners Section */}
+      <div className="border-b border-safari-warm-brown bg-safari-charcoal/50">
+        <div className="container mx-auto px-4 py-8">
+          <h3 className="text-center text-safari-cream font-display font-semibold text-xl mb-6">Our Partners</h3>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-scroll gap-12 items-center">
+              {[...partners, ...partners].map((partner, index) => (
+                <div key={index} className="flex-shrink-0 w-32 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+                  <img 
+                    src={partner.logo} 
+                    alt={partner.name} 
+                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
