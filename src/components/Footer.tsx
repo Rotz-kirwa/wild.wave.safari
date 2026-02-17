@@ -2,16 +2,18 @@ import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react";
 
 const partners = [
-  { name: "KWS", logo: "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/112017/untitled-1_144.png?V2cDV1g0NsJJsBtMYuXh3a9zsT5zt4BE&itok=6KZKWiEQ" },
-  { name: "TRA", logo: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=200&h=80&fit=crop" },
-  { name: "Safari Bookings", logo: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=200&h=80&fit=crop" },
-  { name: "TOSK", logo: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=200&h=80&fit=crop" },
-  { name: "Magical Kenya", logo: "https://images.unsplash.com/photo-1549366021-9f761d450615?w=200&h=80&fit=crop" },
-  { name: "Sopa Lodges", logo: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=200&h=80&fit=crop" },
-  { name: "Serena Hotels", logo: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=200&h=80&fit=crop" },
-  { name: "TripAdvisor", logo: "https://images.unsplash.com/photo-1523805009345-7448845a9e53?w=200&h=80&fit=crop" },
-  { name: "Bonfire Adventures", logo: "https://images.unsplash.com/photo-1484406566174-9da000fda645?w=200&h=80&fit=crop" },
-  { name: "Kenya Railways", logo: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?w=200&h=80&fit=crop" },
+  { name: "KWS", logo: "https://www.kws.go.ke/sites/default/files/logo_2.png" },
+  { name: "TRA", logo: "https://tra.go.ke/wp-content/uploads/2024/09/Logo-TRA.png" },
+  { name: "Safari Bookings", logo: "https://cfstatic.safaribookings.com/img/logos/logo-240x35.png" },
+  { name: "TOSK", logo: "https://staging.toskenya.org/wp-content/uploads/2024/03/tosk_logo_v2.webp" },
+  { name: "Magical Kenya", logo: "https://i.pinimg.com/736x/58/91/7f/58917f27ff0f4b5315f9388877d62bd0.jpg" },
+  { name: "Sopa Lodges", logo: "https://www.sopalodges.com/images/logos/sopalodges-logo.png" },
+  { name: "Serena Hotels", logo: "https://image-tc.galaxy.tf/wisvg-2kxzoagrzpaii22pmbq9rz11m/serena-hotel-logo.svg?width=128&height=80" },
+  { name: "TripAdvisor", logo: "https://static.tacdn.com/img2/brand_refresh_2025/logos/wordmark.svg" },
+  { name: "Safari Link", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYkVixZOmNLseNULkT9hPhNWBRLe4XFwIG1Q&s" },
+  { name: "Mombasa Air", logo: "https://storage.aerocrs.com/99/system/logo.png" },
+  { name: "Jambojet", logo: "https://www.flightscanner.co.ke/wp-content/uploads/2016/12/Jambojet-logo-wide.png" },
+  { name: "SGR", logo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUfUOg0O776XzR-tL21xaFeLSh4JN6acs5ng&s" },
 ];
 
 const Footer = () => {
@@ -21,14 +23,14 @@ const Footer = () => {
       <div className="border-b border-safari-warm-brown bg-safari-charcoal/50">
         <div className="container mx-auto px-4 py-8">
           <h3 className="text-center text-safari-cream font-display font-semibold text-xl mb-6">Our Partners</h3>
-          <div className="relative overflow-hidden">
+          <div className="relative overflow-hidden bg-white/10 rounded-lg py-4">
             <div className="flex animate-scroll gap-12 items-center">
-              {[...partners, ...partners].map((partner, index) => (
-                <div key={index} className="flex-shrink-0 w-32 h-16 flex items-center justify-center grayscale hover:grayscale-0 transition-all">
+              {[...partners, ...partners, ...partners].map((partner, index) => (
+                <div key={index} className={`flex-shrink-0 w-48 h-24 flex items-center justify-center rounded p-3 ${partner.name === 'KWS' || partner.name === 'Safari Bookings' ? 'bg-transparent' : 'bg-white'}`}>
                   <img 
                     src={partner.logo} 
                     alt={partner.name} 
-                    className="max-w-full max-h-full object-contain filter brightness-0 invert opacity-70 hover:opacity-100 transition-opacity"
+                    className="max-w-full max-h-full object-contain"
                   />
                 </div>
               ))}
