@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { MapPin, Phone, Mail, Instagram, Facebook, Twitter } from "lucide-react";
 
 const partners = [
-  { name: "KWS", logo: "https://images.unsplash.com/photo-1564760055775-d63b17a55c44?w=200&h=80&fit=crop" },
+  { name: "KWS", logo: "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-thumbnail/s3/112017/untitled-1_144.png?V2cDV1g0NsJJsBtMYuXh3a9zsT5zt4BE&itok=6KZKWiEQ" },
   { name: "TRA", logo: "https://images.unsplash.com/photo-1516426122078-c23e76319801?w=200&h=80&fit=crop" },
   { name: "Safari Bookings", logo: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=200&h=80&fit=crop" },
   { name: "TOSK", logo: "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?w=200&h=80&fit=crop" },
