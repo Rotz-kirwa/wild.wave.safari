@@ -244,4 +244,59 @@ router.put('/contact-settings', authenticate, async (req, res) => {
   }
 });
 
+// Packages
+router.get('/packages', authenticate, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM packages ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Packages error:', error);
+    res.status(500).json({ error: 'Failed to fetch packages' });
+  }
+});
+
+router.post('/packages', authenticate, async (req, res) => {
+  try {
+    const { name, duration, price, tag, type, image_url, description, itinerary, includes, excludes, published } = req.body;
+    
+    const result = await pool.query(
+      'INSERT INTO packages (name, duration, price, tag, type, image_url, description, itinerary, includes, excludes, published) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      [name, duration, price, tag, type, image_url, description, itinerary, includes, excludes, published !== false]
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create package error:', error);
+    res.status(500).json({ error: 'Failed to create package' });
+  }
+});
+
+router.put('/packages/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, duration, price, tag, type, image_url, description, itinerary, includes, excludes, published } = req.body;
+    
+    const result = await pool.query(
+      'UPDATE packages SET name = $1, duration = $2, price = $3, tag = $4, type = $5, image_url = $6, description = $7, itinerary = $8, includes = $9, excludes = $10, published = $11 WHERE id = $12 RETURNING *',
+      [name, duration, price, tag, type, image_url, description, itinerary, includes, excludes, published, id]
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Update package error:', error);
+    res.status(500).json({ error: 'Failed to update package' });
+  }
+});
+
+router.delete('/packages/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM packages WHERE id = $1', [id]);
+    res.json({ message: 'Package deleted' });
+  } catch (error) {
+    console.error('Delete package error:', error);
+    res.status(500).json({ error: 'Failed to delete package' });
+  }
+});
+
 export default router;

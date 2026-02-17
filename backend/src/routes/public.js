@@ -97,4 +97,14 @@ router.get('/contact-settings', async (req, res) => {
   }
 });
 
+router.get('/packages', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM packages WHERE published = true ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Public packages error:', error);
+    res.status(500).json({ error: 'Failed to fetch packages' });
+  }
+});
+
 export default router;
