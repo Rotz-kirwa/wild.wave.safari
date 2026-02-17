@@ -217,4 +217,31 @@ router.delete('/blogs/:id', authenticate, async (req, res) => {
   }
 });
 
+// Contact Settings
+router.get('/contact-settings', authenticate, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM contact_settings LIMIT 1');
+    res.json(result.rows[0] || {});
+  } catch (error) {
+    console.error('Contact settings error:', error);
+    res.status(500).json({ error: 'Failed to fetch contact settings' });
+  }
+});
+
+router.put('/contact-settings', authenticate, async (req, res) => {
+  try {
+    const { phone, email, whatsapp, address, office_hours } = req.body;
+    
+    const result = await pool.query(
+      'UPDATE contact_settings SET phone = $1, email = $2, whatsapp = $3, address = $4, office_hours = $5, updated_at = CURRENT_TIMESTAMP WHERE id = 1 RETURNING *',
+      [phone, email, whatsapp, address, office_hours]
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Update contact settings error:', error);
+    res.status(500).json({ error: 'Failed to update contact settings' });
+  }
+});
+
 export default router;

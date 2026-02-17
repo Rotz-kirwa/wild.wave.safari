@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, MessageCircle, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,9 +8,24 @@ import { useToast } from "@/hooks/use-toast";
 
 const Contact = () => {
   const { toast } = useToast();
+  const [contactInfo, setContactInfo] = useState<any>({});
   const [formData, setFormData] = useState({
     name: "", email: "", phone: "", destination: "", travelers: "", message: "",
   });
+
+  useEffect(() => {
+    fetchContactInfo();
+  }, []);
+
+  const fetchContactInfo = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/api/public/contact-settings');
+      const data = await response.json();
+      setContactInfo(data);
+    } catch (error) {
+      console.error('Failed to fetch contact info:', error);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,10 +75,10 @@ const Contact = () => {
                 <h3 className="font-display text-xl font-semibold mb-6">Reach Us Directly</h3>
                 <div className="space-y-6">
                   {[
-                    { icon: Phone, label: "Call Us", value: "+254 713 241 666", href: "tel:+254713241666" },
-                    { icon: Mail, label: "Email Us", value: "wildwavesafaris@gmail.com", href: "mailto:wildwavesafaris@gmail.com" },
-                    { icon: MessageCircle, label: "WhatsApp", value: "+254 713 241 666", href: "https://wa.me/254713241666" },
-                    { icon: MapPin, label: "Visit Us", value: "Thika Road, Spur Mall, Nairobi", href: "#" },
+                    { icon: Phone, label: "Call Us", value: contactInfo.phone || "+254 713 241 666", href: `tel:${contactInfo.phone || '+254713241666'}` },
+                    { icon: Mail, label: "Email Us", value: contactInfo.email || "wildwavesafaris@gmail.com", href: `mailto:${contactInfo.email || 'wildwavesafaris@gmail.com'}` },
+                    { icon: MessageCircle, label: "WhatsApp", value: contactInfo.whatsapp || "+254 713 241 666", href: `https://wa.me/${(contactInfo.whatsapp || '+254713241666').replace(/[^0-9]/g, '')}` },
+                    { icon: MapPin, label: "Visit Us", value: contactInfo.address || "Thika Road, Spur Mall, Nairobi", href: "#" },
                   ].map((item) => (
                     <a key={item.label} href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined} rel="noopener noreferrer" className="flex items-start gap-4 group">
                       <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary/20 transition-colors">
@@ -80,9 +95,15 @@ const Contact = () => {
 
               <div className="bg-card rounded-xl p-6 border border-border">
                 <h4 className="font-display font-semibold mb-2">Office Hours</h4>
-                <p className="text-sm text-muted-foreground">Mon - Fri: 8:00 AM - 6:00 PM (EAT)</p>
-                <p className="text-sm text-muted-foreground">Sat: 9:00 AM - 3:00 PM (EAT)</p>
-                <p className="text-sm text-muted-foreground">Sun: Closed</p>
+                {contactInfo.office_hours ? (
+                  <div className="text-sm text-muted-foreground whitespace-pre-line">{contactInfo.office_hours}</div>
+                ) : (
+                  <>
+                    <p className="text-sm text-muted-foreground">Mon - Fri: 8:00 AM - 6:00 PM (EAT)</p>
+                    <p className="text-sm text-muted-foreground">Sat: 9:00 AM - 3:00 PM (EAT)</p>
+                    <p className="text-sm text-muted-foreground">Sun: Closed</p>
+                  </>
+                )}
               </div>
             </div>
 

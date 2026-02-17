@@ -63,16 +63,17 @@ const Blog = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="group mb-12 bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all flex flex-col md:flex-row"
+                className="group relative rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all h-96 mb-12"
               >
-                <div className="md:w-1/2 h-64 md:h-auto overflow-hidden">
-                  <img src={posts[0].image_url} alt={posts[0].title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={posts[0].image_url} alt={posts[0].title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-safari-charcoal/90 via-safari-charcoal/40 to-transparent" />
+                <div className="absolute top-4 left-4 z-10">
+                  <span className="bg-safari-charcoal/70 text-safari-cream text-sm px-3 py-1 rounded-full backdrop-blur-sm">{posts[0].category}</span>
                 </div>
-                <div className="md:w-1/2 p-8 flex flex-col justify-center">
-                  <span className="text-primary text-sm font-medium mb-2">{posts[0].category}</span>
-                  <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">{posts[0].title}</h2>
-                  <p className="text-muted-foreground mb-4">{posts[0].excerpt}</p>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                <div className="absolute bottom-0 left-0 right-0 p-8 z-10">
+                  <h2 className="text-2xl md:text-3xl font-display font-bold text-safari-cream mb-3">{posts[0].title}</h2>
+                  <p className="text-safari-sand/90 mb-4">{posts[0].excerpt}</p>
+                  <div className="flex items-center gap-4 text-sm text-safari-sand/70">
                     <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{formatDate(posts[0].created_at)}</span>
                     <span className="flex items-center gap-1"><Clock className="w-4 h-4" />{posts[0].read_time}</span>
                   </div>
@@ -89,16 +90,17 @@ const Blog = () => {
                     viewport={{ once: true }}
                     variants={fadeUp}
                     custom={i}
-                    className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-lg transition-all"
+                    className="group relative rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all h-80"
                   >
-                    <div className="h-48 overflow-hidden">
-                      <img src={post.image_url} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <img src={post.image_url} alt={post.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-safari-charcoal/90 via-safari-charcoal/40 to-transparent" />
+                    <div className="absolute top-4 left-4 z-10">
+                      <span className="bg-safari-charcoal/70 text-safari-cream text-xs px-2 py-1 rounded-full backdrop-blur-sm">{post.category}</span>
                     </div>
-                    <div className="p-6">
-                      <span className="text-primary text-xs font-medium">{post.category}</span>
-                      <h3 className="text-lg font-display font-bold mt-2 mb-2">{post.title}</h3>
-                      <p className="text-muted-foreground text-sm mb-4">{post.excerpt}</p>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 z-10">
+                      <h3 className="text-lg font-display font-bold text-safari-cream mb-2">{post.title}</h3>
+                      <p className="text-safari-sand/90 text-sm mb-3">{post.excerpt}</p>
+                      <div className="flex items-center gap-3 text-xs text-safari-sand/70">
                         <span className="flex items-center gap-1"><Calendar className="w-3 h-3" />{formatDate(post.created_at)}</span>
                         <span className="flex items-center gap-1"><Clock className="w-3 h-3" />{post.read_time}</span>
                       </div>

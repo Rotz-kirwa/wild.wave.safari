@@ -87,4 +87,14 @@ router.get('/blogs/:id', async (req, res) => {
   }
 });
 
+router.get('/contact-settings', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM contact_settings LIMIT 1');
+    res.json(result.rows[0] || {});
+  } catch (error) {
+    console.error('Public contact settings error:', error);
+    res.status(500).json({ error: 'Failed to fetch contact settings' });
+  }
+});
+
 export default router;
