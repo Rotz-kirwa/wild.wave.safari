@@ -41,6 +41,7 @@ CREATE TABLE IF NOT EXISTS enquiries (
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL,
   phone VARCHAR(50),
+  subject VARCHAR(255),
   message TEXT,
   status VARCHAR(50) DEFAULT 'new',
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -93,3 +94,16 @@ INSERT INTO blogs (title, category, excerpt, content, image_url, read_time, publ
 ('Zanzibar Beyond the Beach: Culture, Spice & History', 'Destination Guide', 'Discover Stone Town, spice plantations, and the rich Swahili heritage of Zanzibar.', 'Explore the cultural richness of Zanzibar island...', 'https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f', '8 min', true),
 ('Hot Air Balloon Safari: Is It Worth the Splurge?', 'Experience', 'We break down costs, what to expect, and why it might be your trip''s highlight.', 'A comprehensive review of hot air balloon safaris...', 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4', '4 min', true),
 ('Ngorongoro Crater: Africa''s Garden of Eden', 'Destination Guide', 'Why this volcanic caldera is one of the most remarkable wildlife habitats on Earth.', 'Discover the wonders of Ngorongoro Crater...', 'https://images.unsplash.com/photo-1535083783855-76ae62b2914e', '6 min', true);
+
+-- Promotions table
+CREATE TABLE IF NOT EXISTS promotions (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  discount_text VARCHAR(255),
+  button_text VARCHAR(100),
+  button_link VARCHAR(255),
+  active BOOLEAN DEFAULT true,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

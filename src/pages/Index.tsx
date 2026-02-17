@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Star, Shield, Users, MapPin, Calendar, Compass, ChevronRight } from "lucide-react";
+import { useState, useEffect } from "react";
 
 import heroImage from "@/assets/hero-safari.jpg";
 import serengetiImg from "@/assets/serengeti.jpg";
@@ -49,13 +50,42 @@ const fadeUp = {
   }),
 };
 
+const heroImages = [
+  heroImage,
+  'https://i.pinimg.com/736x/d0/0f/35/d00f350b62c7de4f504fd8364b425e13.jpg',
+  'https://i.pinimg.com/736x/9e/fc/8e/9efc8e8b2c42b805c4e84d4d1ea3bf7f.jpg',
+  'https://i.pinimg.com/736x/4e/f9/14/4ef914daf2c5e4f103887c8bf6bb0220.jpg'
+];
+
 const Index = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img src={heroImage} alt="African savanna at golden hour" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 overflow-hidden">
+          {heroImages.map((image, index) => (
+            <img
+              key={image}
+              src={image}
+              alt="Safari scene"
+              className={`absolute inset-0 w-full h-full object-cover object-center transition-all duration-[1500ms] ease-in-out ${
+                index === currentImage 
+                  ? 'opacity-100 scale-100' 
+                  : index === (currentImage - 1 + heroImages.length) % heroImages.length
+                  ? 'opacity-0 scale-110'
+                  : 'opacity-0 scale-95'
+              }`}
+            />
+          ))}
           <div className="absolute inset-0 bg-gradient-to-b from-safari-charcoal/60 via-safari-charcoal/30 to-safari-charcoal/70" />
         </div>
         <div className="relative z-10 container mx-auto px-4 text-center">
@@ -92,7 +122,7 @@ const Index = () => {
             transition={{ delay: 0.8, duration: 0.8 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link to="/packages">
+            <Link to="/destinations">
               <Button size="lg" className="text-base px-8 py-6 gap-2">
                 Explore Safaris <ArrowRight className="w-5 h-5" />
               </Button>

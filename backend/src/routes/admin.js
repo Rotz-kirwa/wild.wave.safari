@@ -299,4 +299,59 @@ router.delete('/packages/:id', authenticate, async (req, res) => {
   }
 });
 
+// Promotions
+router.get('/promotions', authenticate, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM promotions ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Promotions error:', error);
+    res.status(500).json({ error: 'Failed to fetch promotions' });
+  }
+});
+
+router.post('/promotions', authenticate, async (req, res) => {
+  try {
+    const { title, description, discount_text, button_text, button_link, active } = req.body;
+    
+    const result = await pool.query(
+      'INSERT INTO promotions (title, description, discount_text, button_text, button_link, active) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [title, description, discount_text, button_text, button_link, active !== false]
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create promotion error:', error);
+    res.status(500).json({ error: 'Failed to create promotion' });
+  }
+});
+
+router.put('/promotions/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, description, discount_text, button_text, button_link, active } = req.body;
+    
+    const result = await pool.query(
+      'UPDATE promotions SET title = $1, description = $2, discount_text = $3, button_text = $4, button_link = $5, active = $6, updated_at = CURRENT_TIMESTAMP WHERE id = $7 RETURNING *',
+      [title, description, discount_text, button_text, button_link, active, id]
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Update promotion error:', error);
+    res.status(500).json({ error: 'Failed to update promotion' });
+  }
+});
+
+router.delete('/promotions/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM promotions WHERE id = $1', [id]);
+    res.json({ message: 'Promotion deleted' });
+  } catch (error) {
+    console.error('Delete promotion error:', error);
+    res.status(500).json({ error: 'Failed to delete promotion' });
+  }
+});
+
 export default router;

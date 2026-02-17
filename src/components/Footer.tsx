@@ -25,7 +25,7 @@ const Footer = () => {
           <h3 className="text-center text-safari-cream font-display font-semibold text-xl mb-6">Our Partners</h3>
           <div className="relative overflow-hidden bg-white/10 rounded-lg py-4">
             <div className="flex animate-scroll gap-12 items-center">
-              {[...partners, ...partners, ...partners].map((partner, index) => (
+              {[...partners, ...partners].map((partner, index) => (
                 <div key={index} className={`flex-shrink-0 w-48 h-24 flex items-center justify-center rounded p-3 ${partner.name === 'KWS' || partner.name === 'Safari Bookings' ? 'bg-transparent' : 'bg-white'}`}>
                   <img 
                     src={partner.logo} 

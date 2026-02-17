@@ -67,13 +67,14 @@ const Packages = () => {
 
       {/* Packages */}
       <section className="py-16 bg-background">
-        <div className="container mx-auto px-4 space-y-8">
+        <div className="container mx-auto px-4">
           {loading ? (
             <p className="text-center text-muted-foreground">Loading packages...</p>
           ) : filtered.length === 0 ? (
             <p className="text-center text-muted-foreground">No packages available.</p>
           ) : (
-            filtered.map((pkg, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {filtered.map((pkg, i) => (
             <motion.div
               key={pkg.id}
               initial="hidden"
@@ -81,18 +82,18 @@ const Packages = () => {
               viewport={{ once: true }}
               variants={fadeUp}
               custom={i}
-              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all flex flex-col md:flex-row"
+              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all flex flex-col"
             >
-              <div className="relative md:w-80 h-56 md:h-auto overflow-hidden shrink-0">
+              <div className="relative h-64 overflow-hidden">
                 <img src={pkg.image_url} alt={pkg.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 <span className="absolute top-4 left-4 bg-primary text-primary-foreground text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                   {pkg.tag}
                 </span>
               </div>
-              <div className="p-6 md:p-8 flex-1 flex flex-col">
+              <div className="p-6 flex flex-col flex-1">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 gap-2">
-                  <h3 className="text-2xl font-display font-bold">{pkg.name}</h3>
-                  <span className="text-2xl font-display font-bold text-primary">${pkg.price}</span>
+                  <h3 className="text-xl font-display font-bold">{pkg.name}</h3>
+                  <span className="text-xl font-display font-bold text-primary">${pkg.price}</span>
                 </div>
                 <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                   <span className="flex items-center gap-1"><Calendar className="w-4 h-4" />{pkg.duration}</span>
@@ -140,7 +141,8 @@ const Packages = () => {
                 </div>
               </div>
             </motion.div>
-          ))
+              ))}
+            </div>
           )}
         </div>
       </section>

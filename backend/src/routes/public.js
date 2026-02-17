@@ -47,11 +47,11 @@ router.post('/bookings', async (req, res) => {
 
 router.post('/enquiries', async (req, res) => {
   try {
-    const { name, email, phone, message } = req.body;
+    const { name, email, phone, subject, message } = req.body;
     
     const result = await pool.query(
-      'INSERT INTO enquiries (name, email, phone, message, status) VALUES ($1, $2, $3, $4, $5) RETURNING *',
-      [name, email, phone, message, 'new']
+      'INSERT INTO enquiries (name, email, phone, subject, message, status) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *',
+      [name, email, phone, subject || null, message, 'new']
     );
     
     res.json(result.rows[0]);
@@ -104,6 +104,16 @@ router.get('/packages', async (req, res) => {
   } catch (error) {
     console.error('Public packages error:', error);
     res.status(500).json({ error: 'Failed to fetch packages' });
+  }
+});
+
+router.get('/promotions', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT * FROM promotions WHERE active = true ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Public promotions error:', error);
+    res.status(500).json({ error: 'Failed to fetch promotions' });
   }
 });
 
