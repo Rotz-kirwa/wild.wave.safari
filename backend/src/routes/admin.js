@@ -354,4 +354,55 @@ router.delete('/promotions/:id', authenticate, async (req, res) => {
   }
 });
 
+// Admin Users
+router.get('/users', authenticate, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, email, role, created_at FROM users ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Users error:', error);
+    res.status(500).json({ error: 'Failed to fetch users' });
+  }
+});
+
+router.post('/users', authenticate, async (req, res) => {
+  try {
+    const { name, email, password, role } = req.body;
+    const bcrypt = await import('bcrypt');
+    const hashedPassword = await bcrypt.hash(password, 12);
+    
+    const result = await pool.query(
+      'INSERT INTO users (name, email, password, role) VALUES ($1, $2, $3, $4) RETURNING id, name, email, role, created_at',
+      [name, email, hashedPassword, role || 'sub-admin']
+    );
+    
+    res.json(result.rows[0]);
+  } catch (error) {
+    console.error('Create user error:', error);
+    res.status(500).json({ error: 'Failed to create user' });
+  }
+});
+
+router.delete('/users/:id', authenticate, async (req, res) => {
+  try {
+    const { id } = req.params;
+    await pool.query('DELETE FROM users WHERE id = $1', [id]);
+    res.json({ message: 'User deleted' });
+  } catch (error) {
+    console.error('Delete user error:', error);
+    res.status(500).json({ error: 'Failed to delete user' });
+  }
+});
+
+// Customers
+router.get('/customers', authenticate, async (req, res) => {
+  try {
+    const result = await pool.query('SELECT id, name, email, phone, created_at FROM customers ORDER BY created_at DESC');
+    res.json(result.rows);
+  } catch (error) {
+    console.error('Customers error:', error);
+    res.status(500).json({ error: 'Failed to fetch customers' });
+  }
+});
+
 export default router;

@@ -16,6 +16,7 @@ const navLinks = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -24,7 +25,18 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => setIsOpen(false), [location]);
+  useEffect(() => {
+    setIsOpen(false);
+    const token = localStorage.getItem('customerToken');
+    setIsLoggedIn(!!token);
+  }, [location]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('customerToken');
+    localStorage.removeItem('customerData');
+    setIsLoggedIn(false);
+    window.location.href = '/';
+  };
 
   return (
     <nav
@@ -58,12 +70,23 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <Link to="/contact">
+          <Link to={isLoggedIn ? "/booking" : "/auth"}>
             <Button variant="default" size="sm" className="gap-2">
               <Phone className="w-4 h-4" />
-              Book Now
+              Book Safari
             </Button>
           </Link>
+          {isLoggedIn ? (
+            <Button variant="outline" size="sm" onClick={handleLogout}>
+              Logout
+            </Button>
+          ) : (
+            <Link to="/auth">
+              <Button variant="outline" size="sm">
+                Sign In / Sign Up
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Mobile Toggle */}
@@ -98,12 +121,23 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link to="/contact">
+              <Link to={isLoggedIn ? "/booking" : "/auth"}>
                 <Button className="w-full mt-2 gap-2">
                   <Phone className="w-4 h-4" />
-                  Book Now
+                  Book Safari
                 </Button>
               </Link>
+              {isLoggedIn ? (
+                <Button variant="outline" className="w-full" onClick={handleLogout}>
+                  Logout
+                </Button>
+              ) : (
+                <Link to="/auth">
+                  <Button variant="outline" className="w-full mt-2">
+                    Sign In / Sign Up
+                  </Button>
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

@@ -70,9 +70,9 @@ export default function PromotionalPopup() {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md mx-4"
+            className="fixed inset-4 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2 md:inset-auto z-50 md:w-full md:max-w-md flex items-center justify-center"
           >
-            <div className="bg-white dark:bg-safari-charcoal rounded-2xl shadow-2xl overflow-hidden border-4 border-safari-gold">
+            <div className="bg-white dark:bg-safari-charcoal rounded-2xl shadow-2xl overflow-hidden border-4 border-safari-gold w-full max-h-[90vh] overflow-y-auto">
               <button
                 onClick={handleClose}
                 className="absolute top-4 right-4 p-2 rounded-full bg-white/90 hover:bg-white transition-colors z-10"
@@ -111,7 +111,14 @@ export default function PromotionalPopup() {
                 </p>
                 <Link
                   to={promotion.button_link}
-                  onClick={handleClose}
+                  onClick={(e) => {
+                    const token = localStorage.getItem('customerToken');
+                    if (!token) {
+                      e.preventDefault();
+                      window.location.href = '/auth';
+                    }
+                    handleClose();
+                  }}
                   className="block w-full text-center px-6 py-3 bg-safari-gold hover:bg-safari-terracotta text-white font-bold rounded-xl transition-colors"
                 >
                   {promotion.button_text}

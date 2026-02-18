@@ -120,7 +120,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-row gap-4 justify-center"
           >
             <Link to="/destinations">
               <Button size="lg" className="text-base px-8 py-6 gap-2">
@@ -358,14 +358,14 @@ const Index = () => {
             <motion.p variants={fadeUp} custom={1} className="text-safari-sand/90 text-lg max-w-xl mx-auto mb-8">
               Let us craft your perfect safari. Tell us your dream, and we'll make it happen.
             </motion.p>
-            <motion.div variants={fadeUp} custom={2} className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.div variants={fadeUp} custom={2} className="flex flex-row gap-4 justify-center">
               <Link to="/contact">
                 <Button size="lg" className="text-base px-8 py-6 gap-2">
                   Start Planning <ArrowRight className="w-5 h-5" />
                 </Button>
               </Link>
               <a href="https://wa.me/254713241666" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="text-base px-8 py-6 border-safari-cream/30 text-safari-cream hover:bg-safari-cream/10">
+                <Button size="lg" variant="outline" className="text-base px-8 py-6 border-safari-cream text-safari-cream bg-transparent hover:bg-safari-cream hover:text-safari-charcoal">
                   WhatsApp Us
                 </Button>
               </a>

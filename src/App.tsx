@@ -14,6 +14,8 @@ import Packages from "./pages/Packages";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import Booking from "./pages/Booking";
+import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +41,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/packages" element={<Packages />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path="/booking" element={<Booking />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />

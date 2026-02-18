@@ -31,11 +31,11 @@ router.get('/destinations/:id', async (req, res) => {
 
 router.post('/bookings', async (req, res) => {
   try {
-    const { customer_name, email, phone, safari_type, number_of_people, start_date, total_price } = req.body;
+    const { customer_name, email, phone, safari_type, number_of_people, start_date, total_price, special_requests } = req.body;
     
     const result = await pool.query(
-      'INSERT INTO bookings (customer_name, email, phone, safari_type, number_of_people, start_date, total_price, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
-      [customer_name, email, phone, safari_type, number_of_people, start_date, total_price, 'pending']
+      'INSERT INTO bookings (customer_name, email, phone, safari_type, number_of_people, start_date, total_price, special_requests, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
+      [customer_name, email, phone, safari_type, number_of_people, start_date, total_price, special_requests, 'pending']
     );
     
     res.json(result.rows[0]);
